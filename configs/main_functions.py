@@ -234,11 +234,9 @@ def wallet_output():
             file = open("wallet_info_large.txt", "w", encoding="utf8")
             file.write(f'{client.get_user_info(client.userId).nickname} has {coins} ac.\n\n')
 
-            cnt = 0
             for i in wallet_list:
                 i.sort()
                 for line in i:
-                    cnt+=1
                     file.write(line)
             file.close()
             break
@@ -251,9 +249,7 @@ def wallet_output():
             file = open("wallet_info.txt", "w", encoding="utf8")
             file.write(f'{client.get_user_info(client.userId).nickname} has {coins} ac.\n\n')
 
-            cnt = 0
             for line in wallet:
-                cnt+=1
                 file.write(line)
             file.close()
             break
