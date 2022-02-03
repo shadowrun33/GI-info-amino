@@ -1,0 +1,2 @@
+amino.fix
+rich==11.1.0
