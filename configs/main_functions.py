@@ -1,7 +1,7 @@
 import aminofix
 from rich.console import Console
 from rich.progress import track
-from menu import *
+from . import menu_configs
 
 console = Console()
 
@@ -10,9 +10,9 @@ client = aminofix.Client()
 def login():
     choice_is_made = False
     while choice_is_made == False:
-        choice = login_menu()
+        choice = menu_configs.login_menu()
         if choice == "1":
-            sid = console.input("[bold red][GI][/bold red] SID >> ")
+            sid = console.input("[bold red][GI][/bold red]SID >> ")
             try:
                 client.login_sid(sid)
                 choice_is_made = True
@@ -20,8 +20,8 @@ def login():
             except:
                 console.print_exception(show_locals = False)
         elif choice == "2":
-            email = str(console.input("[bold red][GI][/bold red] Email >> "))
-            password = str(console.input("[bold red][GI][/bold red] Password >> "))
+            email = str(console.input("[bold red][GI][/bold red]Email >> "))
+            password = str(console.input("[bold red][GI][/bold red]Password >> "))
             try:
                 client.login(email, password)
                 choice_is_made = True
@@ -32,7 +32,7 @@ def login():
             choice_is_made = True
             return True
         else:
-            console.print("[bold red][GI][/bold red] Please enter a number of option.")
+            console.print("[bold red][GI][/bold red]Please enter a number of option.")
             choice_is_made = False
 
 def get_user_info():
