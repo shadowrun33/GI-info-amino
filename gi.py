@@ -1,10 +1,14 @@
 import os
 from configs import menu_configs
 from configs import main_functions
+
 global return_to_menu
 global option
+
 return_to_menu = True
+
 cls = lambda: os.system('cls' if os.name=='nt' else 'clear')
+
 while True:
     if return_to_menu == True:
         menu = menu_configs.main_menu()
