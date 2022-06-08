@@ -1,11 +1,11 @@
-import aminofix
+import amino
 from rich.console import Console
 from rich.progress import track
 from . import menu_configs
 
 console = Console()
 
-client = aminofix.Client()
+client = amino.Client()
 
 def login():
     choice_is_made = False
@@ -84,7 +84,7 @@ def get_user_chats():
             chatIds = []
             com_chat = []
             p_com_chat = []
-            sub_client = aminofix.SubClient(comId = i, profile = client.profile)
+            sub_client = amino.SubClient(comId = i, profile = client.profile)
             chat = sub_client.get_chat_threads()
             for chatName, chatId, host, userId, chatType in zip(chat.title, chat.chatId, chat.author.nickname, chat.author.userId, chat.type):
                 if chatType in [0, 1]:
@@ -114,7 +114,7 @@ def get_chat_log(comId, chatId, n):
     userIds = []
     timestamp = []
     output = []
-    sub_client = aminofix.SubClient(comId, profile = client.profile)
+    sub_client = amino.SubClient(comId, profile = client.profile)
     if sub_client.get_chat_thread(chatId).type == 0:
         output_header = f'Messages in private chat with {sub_client.get_chat_thread(chatId).author.nickname}.\n'
     else:
@@ -154,7 +154,7 @@ def get_wallet_info(l, n):
     return [coins, output]
 
 def get_comments(comId, l, n):
-    sub_client = aminofix.SubClient(comId, profile = client.profile)
+    sub_client = amino.SubClient(comId, profile = client.profile)
     comments = sub_client.get_wall_comments(client.userId, "newest", l, n)
     output_header = f'Wall comments in {client.get_community_info(comId).name}:\n'
     output = []
