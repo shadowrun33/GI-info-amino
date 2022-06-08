@@ -1,2 +1,2 @@
-amino.fix
+amino.py
 rich==11.1.0
